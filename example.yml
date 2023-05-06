@@ -1,0 +1,6 @@
+configs:
+  name: example
+  lists:
+    - AA
+    - BB
+    - CC
