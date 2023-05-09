@@ -1,0 +1,22 @@
+version: 0.1
+service_name: Test
+base_url: api
+
+interfaces:
+  - name: IPerson
+    properties: 
+      - name: fullname
+        type: string
+      - name: otherPerson
+        type: IPerson
+
+methods:
+  - name: getUser
+    endpoint: /user:id
+    method: get
+    response:
+      type: IPerson
+    request:
+      properties:
+        - name: id
+          type: string
