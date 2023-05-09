@@ -1,6 +1,10 @@
 import { program } from "commander";
 import fs from "fs";
 import yaml from "js-yaml";
+import prettier from "prettier";
+import { serviceTemplate } from "./service.template";
+import prettierConfig from "./prettier.config";
+import { interfaceTemplate } from "./interface.template";
 
 program
   .command("generate <filename>")
@@ -22,8 +26,26 @@ program
         filename = `./${filename}`;
       }
       const fileContents = fs.readFileSync(filename, "utf8");
-      const data = yaml.load(fileContents);
-      console.log(data);
+      const data: any = yaml.load(fileContents);
+      const code = serviceTemplate(
+        data.service_name,
+        data.base_url,
+        data.methods
+      );
+      data.interfaces.forEach((i: any) => {
+        const _interface = interfaceTemplate(i.name, i.properties);
+        const formattedCode = prettier.format(_interface, prettierConfig);
+        fs.writeFile(`I${i.name}.ts`, formattedCode, (err) => {
+          if (err) throw err;
+          console.log(`${i.name}.ts created successfully!`);
+        });
+      });
+
+      const formattedCode = prettier.format(code, prettierConfig);
+      fs.writeFile(`${data.service_name}Service.ts`, formattedCode, (err) => {
+        if (err) throw err;
+        console.log(`${data.service_name}Service.ts created successfully!`);
+      });
     } catch (err) {
       console.log(err.message);
     }
