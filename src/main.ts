@@ -5,7 +5,7 @@ import prettier from "prettier";
 import { serviceTemplate } from "./service.template";
 import prettierConfig from "./prettier.config";
 import { interfaceTemplate } from "./interface.template";
-import path, { join } from "path";
+import path from "path";
 
 const program = new Command();
 program
