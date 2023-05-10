@@ -6,17 +6,21 @@ import { serviceTemplate } from "./service.template";
 import prettierConfig from "./prettier.config";
 import { interfaceTemplate } from "./interface.template";
 import path from "path";
+import { response } from "@PT-Neural-Technologies-Indonesia/service-api-fe";
 
 const program = new Command();
 program
-  .command("generate <filename>")
+  .command("generate")
   .description("Generate JavaScript file with console log")
-  .action((filename: string) => {
-    const code = "console.log('Hello, World!');";
-    fs.writeFile(`${filename}.js`, code, (err) => {
-      if (err) throw err;
-      console.log(`${filename}.js created successfully!`);
-    });
+  .action((filename) => {
+    console.log(filename);
+
+    console.log(response());
+    // const code = "console.log('Hello, World!');";
+    // fs.writeFile(`${filename}.js`, code, (err) => {
+    //   if (err) throw err;
+    //   console.log(`${filename}.js created successfully!`);
+    // });
   });
 
 program

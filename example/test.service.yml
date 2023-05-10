@@ -3,19 +3,19 @@ service_name: Test
 base_url: api
 
 interfaces:
-  - name: IPerson
+  - name: IUser
     properties: 
       - name: fullname
         type: string
       - name: otherPerson
-        type: IPerson
+        type: IUser
 
 methods:
   - name: getUser
     endpoint: /user:id
     method: get
     response:
-      type: IPerson
+      type: IUser
     request:
       properties:
         - name: id

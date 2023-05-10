@@ -3,12 +3,12 @@ import {
   response,
   Get,
 } from '@pt-neural-technologies-indonesia/service-api-fe';
-import { IPerson } from './IPerson';
+import { IUser } from './IUser';
 
 @Service('api')
 export class TestService {
   @Get('/user:id')
   getUser(_: { id: string }) {
-    return response<IPerson>();
+    return response<IUser>();
   }
 }
