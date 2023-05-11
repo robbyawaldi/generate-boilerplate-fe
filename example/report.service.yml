@@ -1,0 +1,100 @@
+version: 0.1
+service_name: Report2
+base_url: api
+
+methods:
+  - name: getFilterCities
+    endpoint: /filter/cities
+    method: post
+    response:
+      type: Response
+    request:
+      type: FilterRequest
+  - name: getFilterRegions
+    endpoint: /filter/regions
+    method: post
+    response:
+      type: Response
+  - name: getFilterUseCase
+    endpoint: /filter/use-cases
+    method: post
+    response:
+      type: Response
+  - name: getFilterParams
+    endpoint: /filter/params
+    method: post
+    response:
+      type: Response
+    request:
+      type: FilterRequest
+  - name: getFilterDistricts
+    endpoint: /filter/districts
+    method: post
+    response:
+      type: Response
+    request:
+      type: FilterRequest
+  - name: getFilterKpis
+    endpoint: /filter/kpis
+    method: post
+    response:
+      type: Response
+  - name: getSummaryDetail
+    endpoint: /summary/detail
+    method: post
+    response:
+      type: Response
+    request:
+      type: FilterRequest
+  - name: getSummaryMatrix
+    endpoint: /summary/matrix
+    method: post
+    response:
+      type: Response
+    request:
+      type: FilterRequest
+  - name: getSummaryTrend
+    endpoint: /summary/trend?=kpi:kpi
+    method: post
+    response:
+      type: Response
+    request:
+      type: FilterRequest
+      properties:
+        - name: kpi
+          type: string
+  - name: getSummaryExecution
+    endpoint: /summary/execution
+    method: post
+    response:
+      type: Response
+    request:
+      type: FilterRequest
+  - name: getSummaryKPI
+    endpoint: /summary/kpi
+    method: post
+    response:
+      type: Response
+    request:
+      type: FilterRequest
+  - name: getSummaryKPITable
+    endpoint: /summary/kpi/table
+    method: post
+    response:
+      type: Response
+    request:
+      type: FilterRequest
+  - name: getSummaryExecutionTable
+    endpoint: /summary/execution/table
+    method: post
+    response:
+      type: Response
+    request:
+      type: FilterRequest
+  - name: downloadSummaryDetail
+    endpoint: /summary/detail/download
+    method: post
+    response:
+      type: Response
+    request:
+      type: FilterRequest
