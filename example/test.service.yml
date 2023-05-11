@@ -12,11 +12,14 @@ interfaces:
 
 methods:
   - name: getUser
-    endpoint: /user:id
+    endpoint: /user/:id/:groupid
     method: get
     response:
       type: IUser
     request:
+      type: IUser
       properties:
         - name: id
+          type: string
+        - name: groupid
           type: string

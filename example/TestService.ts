@@ -7,8 +7,8 @@ import { IUser } from './IUser';
 
 @Service('api')
 export class TestService {
-  @Get('/user:id')
-  getUser(_: { id: string }) {
+  @Get('/user/:id/:groupid')
+  getUser(_: IUser & { id: string; groupid: string }) {
     return response<IUser>();
   }
 }
